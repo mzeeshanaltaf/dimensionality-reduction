@@ -15,12 +15,24 @@ display_footer()
 
 faq_data = {
         'What this Application is about?':
-            '<p>A web app that let you explore ... .</p>',
-        'Which Tokenizers are supported by this application?':
-            'Following table list the supported Tokenizers by this app.',
+            '<p>A web app allows to explore high dimensional dataset in 2D or 3D.</p>',
+        'Which Dataset is supported by this application?':
+            'This application supports the following dataset:'
+            '<ul>'
+            '<li> Iris</li>'
+            '<li> Penguin</li>'
+            '</ul>',
+        'Which techniques are used for dimensionality reduction ?':
+            'This application supports the following techniques:'
+            '<ul>'
+            '<li> PCA</li>'
+            '<li> LDA</li>'
+            '<li> t-SNE</li>'
+            '<li> UMAP</li>'
+            '</ul>',
         'I want to make modification in the application. Can I get the application source code?':
             '<p>Yes, Source code of this application is available at: '
-            '<a href="https://github.com/mzeeshanaltaf/">GitHub</a></p>',
+            '<a href="https://github.com/mzeeshanaltaf/dimensionality-reduction">GitHub</a></p>',
 
     }
 
