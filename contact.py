@@ -31,7 +31,7 @@ if 'captcha_text' not in st.session_state:
 captcha_text, captcha_image = st.session_state.captcha_text
 
 ## Contact Form
-app_name = 'APP NAME'
+app_name = 'DimenSight'
 # Page configuration options
 page_title = "Contact Us"
 page_icon = ":email:"
