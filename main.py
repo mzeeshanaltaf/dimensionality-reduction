@@ -21,7 +21,7 @@ display_footer()
 st.header('Configuration:')
 col1, col2, col3 = st.columns(3, border=True)
 with col1:
-    dataset_selection = st.radio('Select the Dataset:', ['Iris', 'Penguin'], horizontal=False,
+    dataset_selection = st.radio('Select the Dataset:', ['Iris', 'Penguin', 'MNIST'], horizontal=False,
                                   label_visibility="visible")
 with col2:
     plot_selection = st.radio('Select the Plot Type:', ['2D', '3D'], horizontal=False,

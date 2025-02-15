@@ -1,5 +1,6 @@
 import streamlit as st
 from sklearn.datasets import load_iris
+from keras.datasets import mnist
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
@@ -39,14 +40,20 @@ def load_dataset(dataset):
 
         df = pd.DataFrame(X)
         df['Target_Names'] = penguins["species"]
-        df.dropna(inplace=True)
+
+    elif dataset == 'MNIST':
+        (X, y), (_, _) = mnist.load_data()
+        X = X.reshape(len(X), -1)
+        df_mnist = pd.DataFrame(X)
+        df_mnist['Target_Names'] = y.astype(str)
+        df = df_mnist.sample(n=10000, random_state=42).reset_index(drop=True) # Get the random sample from MNIST dataset
 
     return df
 
 def dimensionality_reduction_pca(dataset, num_dim):
     df = load_dataset(dataset)
-    X = df.drop(columns=['Target_Names'])
 
+    X = df.drop(columns=['Target_Names'])
     pca = PCA(n_components=num_dim)
     X_pca = pca.fit_transform(X)
 
@@ -63,7 +70,7 @@ def dimensionality_reduction_tsne(dataset, num_dim):
     X = df.drop(columns=['Target_Names'])
 
     # Apply t-SNE to reduce the dimensions to 2
-    tsne = TSNE(n_components=num_dim)
+    tsne = TSNE(n_components=num_dim, n_jobs=-1)
     X_tsne = tsne.fit_transform(X)
 
     df_tsne = pd.DataFrame(X_tsne)
@@ -120,8 +127,9 @@ def dimensionality_reduction_lda(dataset, num_dim):
 def plot_2d_chart(df, dataset, technique):
 
     df.columns = [f'{technique}1', f'{technique}2', 'Target_Names']
+    df = df.dropna() # Drop NA values (if any)
 
-    # Streamlit App
+    # Chart Title
     st.title(f"{dataset} Dataset {technique} Visualization")
 
     # Scatter Plot
@@ -130,8 +138,9 @@ def plot_2d_chart(df, dataset, technique):
 def plot_3d_chart(df, dataset, technique):
 
     df.columns = [f'{technique}1', f'{technique}2', f'{technique}3', 'Target_Names']
+    df = df.dropna() # Drop NA values (if any)
 
-    # Streamlit App
+    # Chart Title
     st.title(f"{dataset} Dataset {technique} Visualization")
 
     fig = px.scatter_3d(df, x=f'{technique}1', y=f'{technique}2', z=f'{technique}3', color='Target_Names', title="3D Scatter Plot")

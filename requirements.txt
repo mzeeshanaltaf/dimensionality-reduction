@@ -5,3 +5,5 @@ umap-learn
 plotly
 seaborn
 scikit-learn
+keras
+tensorflow
