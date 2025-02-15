@@ -15,6 +15,7 @@ Penguins 🐧, or MNIST 🔢, and apply powerful techniques like PCA, UMAP, LDA,
 detail. Whether you're a data enthusiast or a pro, DimenSight makes dimensionality reduction simple, interactive, 
 and fun! 🚀📊*
 """)
+st.info('Visualization of MNIST dataset may take few minutes to process.', icon=":material/info:")
 # Display footer in the sidebar
 display_footer()
 
