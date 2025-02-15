@@ -46,7 +46,7 @@ def load_dataset(dataset):
         X = X.reshape(len(X), -1)
         df_mnist = pd.DataFrame(X)
         df_mnist['Target_Names'] = y.astype(str)
-        df = df_mnist.sample(n=10000, random_state=42).reset_index(drop=True) # Get the random sample from MNIST dataset
+        df = df_mnist.sample(n=1000, random_state=42).reset_index(drop=True) # Get the random sample from MNIST dataset
 
     return df
 
@@ -99,6 +99,7 @@ def dimensionality_reduction_umap(dataset, num_dim):
 
 def dimensionality_reduction_lda(dataset, num_dim):
     df = load_dataset(dataset)
+    df = df.dropna()
     X = df.drop(columns=['Target_Names'])
     y = df['Target_Names']
 
