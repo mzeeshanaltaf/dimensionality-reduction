@@ -1,0 +1,7 @@
+streamlit
+email-validator
+captcha
+umap-learn
+plotly
+seaborn
+scikit-learn
