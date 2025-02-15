@@ -7,7 +7,7 @@ detail. Whether you're a data enthusiast or a pro, DimenSight makes dimensionali
 and fun! 🚀📊
 
 # Application Link
--
+https://dimensight.streamlit.app/
 
 # Technologies Used
 * streamlit -- Front end development
