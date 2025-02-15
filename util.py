@@ -99,7 +99,7 @@ def dimensionality_reduction_lda(dataset, num_dim):
     # n_components ≤ min(n_features, n_classes - 1)
     allowed_components = min(len(X.columns), len(y.unique()) - 1)
 
-    if allowed_components <= num_dim:
+    if allowed_components < num_dim:
         st.warning(f'LDA for {dataset} dataset with {num_dim} components is not possible. Maximum allowed component for LDA '
                    f'is {allowed_components}.', icon=":material/warning:")
 
@@ -135,6 +135,9 @@ def plot_3d_chart(df, dataset, technique):
     st.title(f"{dataset} Dataset {technique} Visualization")
 
     fig = px.scatter_3d(df, x=f'{technique}1', y=f'{technique}2', z=f'{technique}3', color='Target_Names', title="3D Scatter Plot")
+
+    # Increase figure size
+    fig.update_layout(width=1000,  height=1000)
 
     # Show the plot in Streamlit
     st.plotly_chart(fig)
